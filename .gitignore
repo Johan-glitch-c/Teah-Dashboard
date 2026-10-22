@@ -1,0 +1,65 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+
+# User uploaded files
+media/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# SQL files and database dumps
+*.sql
+*.sqlite3
+*.dump
+*.bak
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# IDE
+.idea/
+
+# Linux temporary files
+*~
+.Trash-*
+.directory
+.nfs*
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node.js, if used
+node_modules/

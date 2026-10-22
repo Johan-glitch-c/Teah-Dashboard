@@ -1,0 +1,220 @@
+{% load static%}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>PyCore Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" data-page="overview" aria-label="PyCore Workspace home">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>PyCore</strong><small>WORKSPACE</small></span>
+      </a>
+
+      <button class="workspace-switcher" type="button">
+        <span class="workspace-avatar">P</span>
+        <span class="workspace-copy"><strong>PyCore Team</strong><small>Team workspace</small></span>
+        <span class="switcher-dots">•••</span>
+      </button>
+
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" type="button" data-page="overview"><span class="nav-icon">◫</span><span>Overview</span></button>
+        <button class="nav-item" type="button" data-page="projects"><span class="nav-icon">▦</span><span>Projects</span><span class="nav-count">4</span></button>
+        <button class="nav-item" type="button" data-page="kanban"><span class="nav-icon">☷</span><span>Kanban board</span></button>
+        <button class="nav-item" type="button" data-page="team"><span class="nav-icon">♧</span><span>Team members</span></button>
+        <button class="nav-item" type="button" data-page="activity"><span class="nav-icon">↻</span><span>Activity log</span></button>
+      </nav>
+
+      <div class="nav-label projects-label">YOUR PROJECTS <button class="tiny-plus" type="button" aria-label="Add project">+</button></div>
+      <div class="project-nav">
+        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot violet"></span> TripAz <span class="project-more">•••</span></button>
+        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot blue"></span> Urban Solutions</button>
+        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot green"></span> Computer Vision AI</button>
+        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot orange"></span> Internal Tools</button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <div class="upgrade-icon">✦</div>
+          <strong>Built by the team</strong>
+          <p>A focused space for PyCore to plan, build and ship.</p>
+          <button type="button" class="text-button">Workspace settings <span>↗</span></button>
+        </div>
+        <button class="profile-switcher" type="button" data-page="team">
+          <span class="avatar avatar-me">AA</span>
+          <span class="profile-copy"><strong>Ali Asadov</strong><small>Team member</small></span>
+          <span class="profile-more">⌄</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobileScrim"></div>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-menu" id="mobileMenu" type="button" aria-label="Open navigation">☰</button>
+          <button class="icon-button collapse-button" id="collapseSidebar" type="button" aria-label="Collapse sidebar">☰</button>
+          <div class="breadcrumbs"><span>PyCore Team</span><span class="crumb-slash">/</span><strong id="currentPageLabel">Overview</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <label class="search-box"><span>⌕</span><input type="search" placeholder="Search anything..." aria-label="Search"><kbd>⌘ K</kbd></label>
+          <button class="icon-button notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+          <span class="topbar-divider"></span>
+          <button class="avatar avatar-me top-avatar" type="button" data-page="team" aria-label="Open profile">AA</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <!-- OVERVIEW -->
+        <section class="page-section active" id="page-overview" data-title="Overview">
+          <div class="page-heading reveal">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span> TEAM WORKSPACE</div>
+              <h1>Good afternoon, team <span class="wave">✳</span></h1>
+              <p class="page-subtitle">Here’s what’s happening across PyCore today.</p>
+            </div>
+            <div class="heading-actions"><button class="button button-secondary" type="button"><span>↗</span> Share workspace</button><button class="button button-primary" type="button" data-open-modal="projectModal"><span>＋</span> New project</button></div>
+          </div>
+
+          <div class="stats-grid reveal">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Active projects</span><span class="stat-icon purple">▦</span></div><div class="stat-value">04 <span class="stat-trend positive">↗ 2</span></div><div class="stat-foot">Across the team workspace</div><div class="stat-spark spark-purple"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Open tasks</span><span class="stat-icon blue">☷</span></div><div class="stat-value">28 <span class="stat-trend positive">↗ 8.4%</span></div><div class="stat-foot">Tasks waiting to be completed</div><div class="stat-spark spark-blue"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed this week</span><span class="stat-icon green">✓</span></div><div class="stat-value">16 <span class="stat-trend positive">↗ 12%</span></div><div class="stat-foot">Great momentum, keep it up</div><div class="stat-spark spark-green"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Team members</span><span class="stat-icon orange">♧</span></div><div class="stat-value">06 <span class="stat-note">active</span></div><div class="stat-foot">People building together</div><div class="member-stack"><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-orange">JM</span><span class="avatar mini avatar-green">RK</span><span class="avatar mini avatar-pink">+2</span></div></article>
+          </div>
+
+          <div class="content-grid overview-grid">
+            <section class="panel projects-panel reveal">
+              <div class="panel-heading"><div><h2>Projects overview</h2><p>Your team’s active work at a glance</p></div><button class="link-button" type="button" data-page="projects">View all <span>→</span></button></div>
+              <div class="project-list">
+                <article class="project-row"><div class="project-symbol symbol-violet">T</div><div class="project-info"><div class="project-title-line"><h3>TripAz</h3><span class="status-pill status-progress">In progress</span></div><p>Travel planning platform</p><div class="progress-track"><span style="width:72%;background:#9b8afb"></span></div><div class="progress-meta"><span>72% complete</span><span>8 / 11 tasks</span></div></div><div class="project-row-side"><div class="avatar-stack"><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-orange">JM</span></div><span class="due-date">Due Oct 28</span></div></article>
+                <article class="project-row"><div class="project-symbol symbol-blue">U</div><div class="project-info"><div class="project-title-line"><h3>Urban Solutions</h3><span class="status-pill status-review">In review</span></div><p>Smart city innovation project</p><div class="progress-track"><span style="width:54%;background:#64a7ff"></span></div><div class="progress-meta"><span>54% complete</span><span>6 / 12 tasks</span></div></div><div class="project-row-side"><div class="avatar-stack"><span class="avatar mini avatar-green">RK</span><span class="avatar mini avatar-pink">AS</span></div><span class="due-date">Due Nov 02</span></div></article>
+                <article class="project-row"><div class="project-symbol symbol-green">C</div><div class="project-info"><div class="project-title-line"><h3>Computer Vision AI</h3><span class="status-pill status-progress">In progress</span></div><p>AI-powered visual recognition</p><div class="progress-track"><span style="width:36%;background:#54d6a0"></span></div><div class="progress-meta"><span>36% complete</span><span>4 / 13 tasks</span></div></div><div class="project-row-side"><div class="avatar-stack"><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-blue">AA</span></div><span class="due-date">Due Nov 10</span></div></article>
+              </div>
+            </section>
+
+            <section class="panel activity-panel reveal">
+              <div class="panel-heading"><div><h2>Recent activity</h2><p>Latest updates from your team</p></div><button class="icon-button subtle-icon" type="button" data-page="activity" aria-label="View activity">•••</button></div>
+              <div class="activity-list compact-activity">
+                <article class="activity-item"><span class="activity-avatar avatar-purple">AM</span><div class="activity-copy"><p><strong>Adil Mustafazade</strong> completed a task</p><span class="activity-detail">TripAz · UI review</span><time>12 min ago</time></div></article>
+                <article class="activity-item"><span class="activity-avatar avatar-green">RK</span><div class="activity-copy"><p><strong>Rashad Karimov</strong> moved a task to review</p><span class="activity-detail">Urban Solutions · API integration</span><time>48 min ago</time></div></article>
+                <article class="activity-item"><span class="activity-avatar avatar-blue">AA</span><div class="activity-copy"><p><strong>Ali Asadov</strong> updated a project</p><span class="activity-detail">Computer Vision AI · Model pipeline</span><time>2 hours ago</time></div></article>
+                <article class="activity-item"><span class="activity-avatar avatar-orange">JM</span><div class="activity-copy"><p><strong>Jamal Mammadov</strong> added a comment</p><span class="activity-detail">TripAz · Landing page</span><time>3 hours ago</time></div></article>
+              </div>
+              <button class="activity-footer" type="button" data-page="activity">View activity log <span>→</span></button>
+            </section>
+          </div>
+
+          <section class="panel tasks-panel reveal">
+            <div class="panel-heading"><div><h2>Priority tasks</h2><p>Tasks that need your team’s attention</p></div><div class="panel-heading-actions"><button class="button button-secondary button-small" type="button" data-page="kanban">Open board</button><button class="button button-primary button-small" type="button" data-open-modal="taskModal">＋ Add task</button></div></div>
+            <div class="table-wrap"><table class="tasks-table"><thead><tr><th>TASK</th><th>PROJECT</th><th>ASSIGNEE</th><th>PRIORITY</th><th>STATUS</th><th>DUE DATE</th></tr></thead><tbody>
+              <tr><td><span class="task-check"></span><span class="task-name">Finalize authentication flow</span></td><td><span class="table-project-dot violet"></span>TripAz</td><td><span class="table-person"><span class="avatar mini avatar-blue">AA</span> Ali Asadov</span></td><td><span class="priority priority-high"><i></i> High</span></td><td><span class="status-pill status-progress">In progress</span></td><td>Oct 24, 2026</td></tr>
+              <tr><td><span class="task-check"></span><span class="task-name">Review computer vision dataset</span></td><td><span class="table-project-dot green"></span>Computer Vision AI</td><td><span class="table-person"><span class="avatar mini avatar-purple">AM</span> Adil Mustafazade</span></td><td><span class="priority priority-medium"><i></i> Medium</span></td><td><span class="status-pill status-todo">To do</span></td><td>Oct 26, 2026</td></tr>
+              <tr><td><span class="task-check"></span><span class="task-name">Prepare demo presentation</span></td><td><span class="table-project-dot blue"></span>Urban Solutions</td><td><span class="table-person"><span class="avatar mini avatar-orange">JM</span> Jamal Mammadov</span></td><td><span class="priority priority-high"><i></i> High</span></td><td><span class="status-pill status-review">In review</span></td><td>Oct 27, 2026</td></tr>
+            </tbody></table></div>
+          </section>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="page-section" id="page-projects" data-title="Projects">
+          <div class="page-heading reveal"><div><div class="eyebrow"><span class="eyebrow-line"></span> PLAN & BUILD</div><h1>Projects</h1><p class="page-subtitle">Keep all of PyCore’s work organized in one place.</p></div><div class="heading-actions"><button class="button button-primary" type="button" data-open-modal="projectModal"><span>＋</span> New project</button></div></div>
+          <div class="filter-row reveal"><div class="filter-chips"><button class="filter-chip selected" type="button">All projects <span>4</span></button><button class="filter-chip" type="button">In progress</button><button class="filter-chip" type="button">In review</button><button class="filter-chip" type="button">Completed</button></div><button class="button button-secondary button-small" type="button">↕ Sort by</button></div>
+          <div class="project-cards-grid reveal">
+            <article class="project-card"><div class="project-card-top"><div class="project-symbol symbol-violet">T</div><button class="icon-button subtle-icon" type="button" aria-label="Project options">•••</button></div><div class="project-title-line"><h3>TripAz</h3><span class="status-pill status-progress">In progress</span></div><p>Travel planning platform that connects people with local experiences.</p><div class="project-card-progress"><div class="progress-meta"><span>Progress</span><strong>72%</strong></div><div class="progress-track"><span style="width:72%;background:#9b8afb"></span></div></div><div class="project-card-bottom"><div class="avatar-stack"><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-orange">JM</span></div><span>8 / 11 tasks</span><span class="due-date">Oct 28</span></div></article>
+            <article class="project-card"><div class="project-card-top"><div class="project-symbol symbol-blue">U</div><button class="icon-button subtle-icon" type="button" aria-label="Project options">•••</button></div><div class="project-title-line"><h3>Urban Solutions</h3><span class="status-pill status-review">In review</span></div><p>Ideas and digital solutions for more sustainable urban living.</p><div class="project-card-progress"><div class="progress-meta"><span>Progress</span><strong>54%</strong></div><div class="progress-track"><span style="width:54%;background:#64a7ff"></span></div></div><div class="project-card-bottom"><div class="avatar-stack"><span class="avatar mini avatar-green">RK</span><span class="avatar mini avatar-pink">AS</span></div><span>6 / 12 tasks</span><span class="due-date">Nov 02</span></div></article>
+            <article class="project-card"><div class="project-card-top"><div class="project-symbol symbol-green">C</div><button class="icon-button subtle-icon" type="button" aria-label="Project options">•••</button></div><div class="project-title-line"><h3>Computer Vision AI</h3><span class="status-pill status-progress">In progress</span></div><p>Computer vision tools for recognizing and classifying real-world issues.</p><div class="project-card-progress"><div class="progress-meta"><span>Progress</span><strong>36%</strong></div><div class="progress-track"><span style="width:36%;background:#54d6a0"></span></div></div><div class="project-card-bottom"><div class="avatar-stack"><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-blue">AA</span></div><span>4 / 13 tasks</span><span class="due-date">Nov 10</span></div></article>
+            <article class="project-card"><div class="project-card-top"><div class="project-symbol symbol-orange">I</div><button class="icon-button subtle-icon" type="button" aria-label="Project options">•••</button></div><div class="project-title-line"><h3>Internal Tools</h3><span class="status-pill status-todo">Planning</span></div><p>Small utilities and shared tools to improve our team workflow.</p><div class="project-card-progress"><div class="progress-meta"><span>Progress</span><strong>18%</strong></div><div class="progress-track"><span style="width:18%;background:#f3aa66"></span></div></div><div class="project-card-bottom"><div class="avatar-stack"><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-green">RK</span></div><span>2 / 11 tasks</span><span class="due-date">Nov 18</span></div></article>
+          </div>
+        </section>
+
+        <!-- KANBAN -->
+        <section class="page-section" id="page-kanban" data-title="Kanban Board">
+          <div class="page-heading reveal"><div><div class="eyebrow"><span class="eyebrow-line"></span> TEAM EXECUTION</div><h1>Kanban board</h1><p class="page-subtitle">A shared view of what’s planned, moving and done.</p></div><div class="heading-actions"><button class="button button-secondary" type="button">⌁ Filter</button><button class="button button-primary" type="button" data-open-modal="taskModal"><span>＋</span> Add task</button></div></div>
+          <div class="board-toolbar reveal"><div class="board-project-select"><span class="project-dot violet"></span><strong>All projects</strong><span>⌄</span></div><div class="board-avatars"><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-orange">JM</span><span class="avatar mini avatar-green">RK</span><button class="avatar mini add-avatar" type="button">+</button></div><span class="board-view-label">Showing 8 tasks</span></div>
+          <div class="kanban-board reveal">
+            <div class="kanban-column"><div class="kanban-column-heading"><span class="column-status status-dot-todo"></span><h3>To do</h3><span class="column-count">2</span><button class="column-menu" type="button">•••</button></div>
+              <article class="kanban-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot violet"></i>TripAz</span><button type="button" class="card-more">•••</button></div><h4>Finalize authentication flow</h4><p>Review login, signup and password reset screens.</p><div class="card-tags"><span class="task-tag tag-design">Design</span><span class="priority priority-high"><i></i> High</span></div><div class="kanban-card-bottom"><span class="task-id">PC-024</span><div class="task-card-meta"><span>◷ Oct 24</span><span class="avatar mini avatar-blue">AA</span></div></div></article>
+              <article class="kanban-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot green"></i>Computer Vision AI</span><button type="button" class="card-more">•••</button></div><h4>Review computer vision dataset</h4><p>Check labels and identify missing samples.</p><div class="card-tags"><span class="task-tag tag-research">Research</span><span class="priority priority-medium"><i></i> Medium</span></div><div class="kanban-card-bottom"><span class="task-id">PC-031</span><div class="task-card-meta"><span>◷ Oct 26</span><span class="avatar mini avatar-purple">AM</span></div></div></article>
+              <button class="add-card-button" type="button" data-open-modal="taskModal">＋ Add a task</button>
+            </div>
+            <div class="kanban-column"><div class="kanban-column-heading"><span class="column-status status-dot-progress"></span><h3>In progress</h3><span class="column-count">3</span><button class="column-menu" type="button">•••</button></div>
+              <article class="kanban-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot blue"></i>Urban Solutions</span><button type="button" class="card-more">•••</button></div><h4>Integrate city data API</h4><p>Connect the dashboard with the current API.</p><div class="card-tags"><span class="task-tag tag-development">Development</span><span class="priority priority-high"><i></i> High</span></div><div class="kanban-card-bottom"><span class="task-id">PC-019</span><div class="task-card-meta"><span>◷ Oct 23</span><span class="avatar mini avatar-green">RK</span></div></div></article>
+              <article class="kanban-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot violet"></i>TripAz</span><button type="button" class="card-more">•••</button></div><h4>Build destination cards</h4><p>Polish responsive cards for the explore page.</p><div class="card-tags"><span class="task-tag tag-design">Design</span><span class="priority priority-medium"><i></i> Medium</span></div><div class="kanban-card-bottom"><span class="task-id">PC-021</span><div class="task-card-meta"><span>◷ Oct 25</span><span class="avatar mini avatar-orange">JM</span></div></div></article>
+              <article class="kanban-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot green"></i>Computer Vision AI</span><button type="button" class="card-more">•••</button></div><h4>Set up model pipeline</h4><p>Prepare preprocessing and inference steps.</p><div class="card-tags"><span class="task-tag tag-development">Development</span></div><div class="kanban-card-bottom"><span class="task-id">PC-029</span><div class="task-card-meta"><span>◷ Oct 29</span><span class="avatar mini avatar-blue">AA</span></div></div></article>
+              <button class="add-card-button" type="button" data-open-modal="taskModal">＋ Add a task</button>
+            </div>
+            <div class="kanban-column"><div class="kanban-column-heading"><span class="column-status status-dot-review"></span><h3>Review</h3><span class="column-count">1</span><button class="column-menu" type="button">•••</button></div>
+              <article class="kanban-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot blue"></i>Urban Solutions</span><button type="button" class="card-more">•••</button></div><h4>Prepare demo presentation</h4><p>Final pass on slides and product screenshots.</p><div class="card-tags"><span class="task-tag tag-content">Content</span><span class="priority priority-high"><i></i> High</span></div><div class="kanban-card-bottom"><span class="task-id">PC-016</span><div class="task-card-meta"><span>◷ Oct 27</span><span class="avatar mini avatar-orange">JM</span></div></div></article>
+              <button class="add-card-button" type="button" data-open-modal="taskModal">＋ Add a task</button>
+            </div>
+            <div class="kanban-column"><div class="kanban-column-heading"><span class="column-status status-dot-done"></span><h3>Done</h3><span class="column-count">2</span><button class="column-menu" type="button">•••</button></div>
+              <article class="kanban-card completed-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot violet"></i>TripAz</span><span class="done-check">✓</span></div><h4>Define initial project scope</h4><p>Agree on the MVP and core user journeys.</p><div class="card-tags"><span class="task-tag tag-research">Planning</span></div><div class="kanban-card-bottom"><span class="task-id">PC-004</span><div class="task-card-meta"><span>✓ Completed</span><span class="avatar mini avatar-purple">AM</span></div></div></article>
+              <article class="kanban-card completed-card"><div class="kanban-card-top"><span class="card-project-label"><i class="project-dot green"></i>Computer Vision AI</span><span class="done-check">✓</span></div><h4>Collect initial image samples</h4><p>Gather a baseline dataset for training.</p><div class="card-tags"><span class="task-tag tag-research">Research</span></div><div class="kanban-card-bottom"><span class="task-id">PC-007</span><div class="task-card-meta"><span>✓ Completed</span><span class="avatar mini avatar-green">RK</span></div></div></article>
+              <button class="add-card-button" type="button" data-open-modal="taskModal">＋ Add a task</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- TEAM -->
+        <section class="page-section" id="page-team" data-title="Team Members">
+          <div class="page-heading reveal"><div><div class="eyebrow"><span class="eyebrow-line"></span> PEOPLE & PERMISSIONS</div><h1>Team members</h1><p class="page-subtitle">The people behind PyCore, all in one place.</p></div><div class="heading-actions"><button class="button button-secondary" type="button">Manage roles</button><button class="button button-primary" type="button" data-open-modal="memberModal"><span>＋</span> Add member</button></div></div>
+          <div class="team-summary-grid reveal"><div class="team-summary-card"><span class="stat-icon purple">♧</span><div><strong>06</strong><span>Total members</span></div></div><div class="team-summary-card"><span class="stat-icon green">●</span><div><strong>05</strong><span>Active this week</span></div></div><div class="team-summary-card"><span class="stat-icon blue">♜</span><div><strong>03</strong><span>Team roles</span></div></div></div>
+          <div class="panel team-table-panel reveal"><div class="panel-heading"><div><h2>All members</h2><p>Only invited PyCore members can access this workspace.</p></div><label class="search-box table-search"><span>⌕</span><input type="search" placeholder="Find a member..." aria-label="Find a member"></label></div>
+            <div class="table-wrap"><table class="tasks-table members-table"><thead><tr><th>MEMBER</th><th>ROLE</th><th>PROJECTS</th><th>STATUS</th><th>JOINED</th><th></th></tr></thead><tbody>
+              <tr><td><span class="table-person"><span class="avatar avatar-blue">AA</span><span><strong>Ali Asadov</strong><small>ali.asadov@pycore.team</small></span></span></td><td><span class="role-pill role-admin">Admin</span></td><td>TripAz, CV AI</td><td><span class="member-status"><i></i> Active</span></td><td>Jan 2026</td><td><button class="icon-button subtle-icon" type="button" aria-label="Member options">•••</button></td></tr>
+              <tr><td><span class="table-person"><span class="avatar avatar-purple">AM</span><span><strong>Adil Mustafazade</strong><small>adil@pycore.team</small></span></span></td><td><span class="role-pill role-lead">Project lead</span></td><td>TripAz, CV AI</td><td><span class="member-status"><i></i> Active</span></td><td>Jan 2026</td><td><button class="icon-button subtle-icon" type="button" aria-label="Member options">•••</button></td></tr>
+              <tr><td><span class="table-person"><span class="avatar avatar-orange">JM</span><span><strong>Jamal Mammadov</strong><small>jamal@pycore.team</small></span></td><td><span class="role-pill role-member">Member</span></td><td>TripAz, Urban</td><td><span class="member-status"><i></i> Active</span></td><td>Feb 2026</td><td><button class="icon-button subtle-icon" type="button" aria-label="Member options">•••</button></td></tr>
+              <tr><td><span class="table-person"><span class="avatar avatar-green">RK</span><span><strong>Rashad Karimov</strong><small>rashad@pycore.team</small></span></td><td><span class="role-pill role-member">Member</span></td><td>Urban, Internal</td><td><span class="member-status"><i></i> Active</span></td><td>Feb 2026</td><td><button class="icon-button subtle-icon" type="button" aria-label="Member options">•••</button></td></tr>
+              <tr><td><span class="table-person"><span class="avatar avatar-pink">AS</span><span><strong>Aysel Safarova</strong><small>aysel@pycore.team</small></span></td><td><span class="role-pill role-member">Member</span></td><td>Urban Solutions</td><td><span class="member-status idle"><i></i> Away</span></td><td>Mar 2026</td><td><button class="icon-button subtle-icon" type="button" aria-label="Member options">•••</button></td></tr>
+              <tr><td><span class="table-person"><span class="avatar avatar-cyan">NK</span><span><strong>Nihad Khalilov</strong><small>nihad@pycore.team</small></span></td><td><span class="role-pill role-member">Member</span></td><td>Computer Vision AI</td><td><span class="member-status"><i></i> Active</span></td><td>Apr 2026</td><td><button class="icon-button subtle-icon" type="button" aria-label="Member options">•••</button></td></tr>
+            </tbody></table></div>
+          </div>
+          <div class="permission-note reveal"><span class="permission-note-icon">⌑</span><div><strong>Workspace access is restricted</strong><p>Membership, roles and permissions will be enforced by Django on the backend. This screen is a static frontend prototype.</p></div></div>
+        </section>
+
+        <!-- ACTIVITY -->
+        <section class="page-section" id="page-activity" data-title="Activity Log">
+          <div class="page-heading reveal"><div><div class="eyebrow"><span class="eyebrow-line"></span> WORKSPACE HISTORY</div><h1>Activity log</h1><p class="page-subtitle">A timeline of recent changes across PyCore.</p></div><div class="heading-actions"><button class="button button-secondary" type="button">↓ Export log</button></div></div>
+          <div class="activity-filter-bar reveal"><div class="filter-chips"><button class="filter-chip selected" type="button">All activity</button><button class="filter-chip" type="button">Tasks</button><button class="filter-chip" type="button">Projects</button><button class="filter-chip" type="button">Members</button></div><button class="button button-secondary button-small" type="button">Last 7 days⌄</button></div>
+          <div class="panel activity-timeline-panel reveal"><div class="timeline-date-label">TODAY · OCTOBER 21, 2026</div><div class="timeline">
+            <article class="timeline-event"><span class="timeline-avatar avatar-purple">AM</span><div class="timeline-content"><p><strong>Adil Mustafazade</strong> completed <b>UI review</b></p><span class="timeline-context"><i class="project-dot violet"></i> TripAz <span>·</span> Task PC-022</span></div><time>12:42 PM</time></article>
+            <article class="timeline-event"><span class="timeline-avatar avatar-green">RK</span><div class="timeline-content"><p><strong>Rashad Karimov</strong> moved <b>Integrate city data API</b> to Review</p><span class="timeline-context"><i class="project-dot blue"></i> Urban Solutions <span>·</span> Task PC-019</span></div><time>11:58 AM</time></article>
+            <article class="timeline-event"><span class="timeline-avatar avatar-blue">AA</span><div class="timeline-content"><p><strong>Ali Asadov</strong> updated project details</p><span class="timeline-context"><i class="project-dot green"></i> Computer Vision AI <span>·</span> Project settings</span></div><time>10:31 AM</time></article>
+            <article class="timeline-event"><span class="timeline-avatar avatar-orange">JM</span><div class="timeline-content"><p><strong>Jamal Mammadov</strong> added a comment to <b>Landing page</b></p><span class="timeline-context"><i class="project-dot violet"></i> TripAz <span>·</span> Task PC-021</span><blockquote>“The responsive layout is ready for a final check.”</blockquote></div><time>9:45 AM</time></article>
+            <div class="timeline-date-label older-label">YESTERDAY · OCTOBER 20, 2026</div>
+            <article class="timeline-event"><span class="timeline-avatar avatar-pink">AS</span><div class="timeline-content"><p><strong>Aysel Safarova</strong> joined <b>Urban Solutions</b></p><span class="timeline-context">Team membership <span>·</span> Added by workspace admin</span></div><time>4:18 PM</time></article>
+            <article class="timeline-event"><span class="timeline-avatar avatar-purple">AM</span><div class="timeline-content"><p><strong>Adil Mustafazade</strong> created a task <b>Review computer vision dataset</b></p><span class="timeline-context"><i class="project-dot green"></i> Computer Vision AI <span>·</span> Task PC-031</span></div><time>2:06 PM</time></article>
+          </div></div>
+        </section>
+
+        <footer class="page-footer"><span>© 2026 PyCore Workspace</span><span><i></i> All systems operational <span class="footer-separator">·</span> Made for the team</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <!-- UI-only modal prototypes. Django will handle actual form submission later. -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <div class="modal-card"><div class="modal-heading"><div><span class="modal-kicker">WORKSPACE</span><h2 id="projectModalTitle">Create a project</h2></div><button class="icon-button modal-close" type="button" aria-label="Close dialog">×</button></div><p class="modal-description">Start a new project for the PyCore team.</p><form class="prototype-form"><label>Project name<input type="text" placeholder="e.g. New product idea"></label><label>Description<textarea rows="3" placeholder="What is this project about?"></textarea></label><label>Project lead<select><option>Select a team member</option><option>Ali Asadov</option><option>Adil Mustafazade</option><option>Jamal Mammadov</option></select></label><div class="modal-actions"><button class="button button-secondary modal-cancel" type="button">Cancel</button><button class="button button-primary" type="submit">Create project</button></div></form><div class="prototype-hint">UI prototype only — connect this form to a Django view later.</div></div>
+  </div>
+  <div class="modal-backdrop" id="taskModal" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+    <div class="modal-card"><div class="modal-heading"><div><span class="modal-kicker">TASK MANAGEMENT</span><h2 id="taskModalTitle">Add a task</h2></div><button class="icon-button modal-close" type="button" aria-label="Close dialog">×</button></div><p class="modal-description">Describe the next thing your team needs to ship.</p><form class="prototype-form"><label>Task title<input type="text" placeholder="What needs to be done?"></label><label>Project<select><option>Select a project</option><option>TripAz</option><option>Urban Solutions</option><option>Computer Vision AI</option><option>Internal Tools</option></select></label><div class="form-two-col"><label>Assignee<select><option>Unassigned</option><option>Ali Asadov</option><option>Adil Mustafazade</option><option>Jamal Mammadov</option></select></label><label>Priority<select><option>Medium</option><option>High</option><option>Low</option></select></label></div><div class="modal-actions"><button class="button button-secondary modal-cancel" type="button">Cancel</button><button class="button button-primary" type="submit">Create task</button></div></form><div class="prototype-hint">UI prototype only — no data is saved.</div></div>
+  </div>
+  <div class="modal-backdrop" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="memberModalTitle">
+    <div class="modal-card"><div class="modal-heading"><div><span class="modal-kicker">TEAM ACCESS</span><h2 id="memberModalTitle">Add team member</h2></div><button class="icon-button modal-close" type="button" aria-label="Close dialog">×</button></div><p class="modal-description">Only PyCore members should be invited to this workspace.</p><form class="prototype-form"><label>Team member email<input type="email" placeholder="name@pycore.team"></label><label>Role<select><option>Member</option><option>Project lead</option><option>Admin</option></select></label><div class="modal-actions"><button class="button button-secondary modal-cancel" type="button">Cancel</button><button class="button button-primary" type="submit">Prepare invite</button></div></form><div class="prototype-hint">Invitation and access checks must be implemented in Django.</div></div>
+  </div>
+  <div class="toast" id="prototypeToast" role="status">This is a frontend prototype. Django will handle this action.</div>
+</body>
+</html>
