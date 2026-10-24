@@ -24,6 +24,7 @@ class Task(models.Model):
     description = models.TextField()
     status = models.CharField(max_length=2, choices= STATUS,default="ST")
     priority = models.CharField(max_length=2, choices=PRIORITY, default='LW')
+    opened = models.BooleanField(default=True)
     started_dat = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField()
     author = models.ForeignKey(User,on_delete=models.CASCADE, related_name="created_tasks")

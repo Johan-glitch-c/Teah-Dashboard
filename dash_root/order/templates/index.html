@@ -39,11 +39,10 @@
 
       <div class="nav-label projects-label">YOUR PROJECTS <button class="tiny-plus" type="button" aria-label="Add project">+</button></div>
       <div class="project-nav">
-        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot violet"></span> TripAz <span class="project-more">•••</span></button>
-        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot blue"></span> Urban Solutions</button>
-        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot green"></span> Computer Vision AI</button>
-        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot orange"></span> Internal Tools</button>
+        {% for task in tasks%}
+        <button class="project-nav-item" type="button" data-page="projects"><span class="project-dot violet"></span> {{task.name}}<span class="project-more">•••</span></button>
       </div>
+      {%endfor%}
 
       <div class="sidebar-bottom">
         <div class="upgrade-card">
@@ -91,9 +90,12 @@
 
           <div class="stats-grid reveal">
             <article class="stat-card"><div class="stat-top"><span class="stat-label">Active projects</span><span class="stat-icon purple">▦</span></div><div class="stat-value">04 <span class="stat-trend positive">↗ 2</span></div><div class="stat-foot">Across the team workspace</div><div class="stat-spark spark-purple"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Open tasks</span><span class="stat-icon blue">☷</span></div><div class="stat-value">28 <span class="stat-trend positive">↗ 8.4%</span></div><div class="stat-foot">Tasks waiting to be completed</div><div class="stat-spark spark-blue"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed this week</span><span class="stat-icon green">✓</span></div><div class="stat-value">16 <span class="stat-trend positive">↗ 12%</span></div><div class="stat-foot">Great momentum, keep it up</div><div class="stat-spark spark-green"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Team members</span><span class="stat-icon orange">♧</span></div><div class="stat-value">06 <span class="stat-note">active</span></div><div class="stat-foot">People building together</div><div class="member-stack"><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-orange">JM</span><span class="avatar mini avatar-green">RK</span><span class="avatar mini avatar-pink">+2</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Open tasks</span><span class="stat-icon blue">☷</span></div><div class="stat-value">{{count_open_tasks}} <span class="stat-trend positive">↗ 8.4%</span></div><div class="stat-foot">Tasks waiting to be completed</div><div class="stat-spark spark-blue"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed this week</span><span class="stat-icon green">✓</span></div><div class="stat-value">{{completed_tasks}} <span class="stat-trend positive">↗ 12%</span></div><div class="stat-foot">Great momentum, keep it up</div><div class="stat-spark spark-green"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Team members</span><span class="stat-icon orange">♧</span></div><div class="stat-value">{% if users_count < 10 %} 0{{users_count}}{%else%} {{users_count}} {%endif%} <span class="stat-note">active</span></div><div class="stat-foot">People building together</div>
+              <div class="member-stack">{% for user in users%}
+              <span class="avatar mini avatar-purple"><img src="{{user.img.url}}" alt="{{user.username}}" loading="lazy"></span> {%endfor%} </div>
+            </article>
           </div>
 
           <div class="content-grid overview-grid">
