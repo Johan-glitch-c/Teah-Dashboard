@@ -2,7 +2,11 @@ from django.shortcuts import render
 from .models import Task
 from users.models import User
 from django.contrib.auth import get_user
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
+@login_required
 def index(request):
     users_count = User.objects.count()
     users = User.objects.all()
