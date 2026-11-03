@@ -1,0 +1,123 @@
+{% load static%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | PyCore Workspace</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <script src="{% static 'js/login.js'%}" defer></script>
+</head>
+<body>
+
+    <main class="login-page">
+
+        <div class="login-container">
+
+            <header class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <span class="brand-name">PyCore</span>
+                    <span class="brand-subtitle">WORKSPACE</span>
+                </div>
+            </header>
+
+            <section class="login-card">
+
+                <div class="card-heading">
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        Team workspace
+                    </div>
+
+                    <h1>Welcome back</h1>
+                    <p>Sign in to access your workspace.</p>
+                </div>
+
+                <form class="login-form" method="POST">
+
+                    <div class="form-group">
+                        <label for="username">Nickname</label>
+
+                        <div class="input-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.7">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+                            </svg>
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Enter your nickname"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <div class="input-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.7">
+                                <rect x="4" y="10" width="16" height="11" rx="2"/>
+                                <path d="M8 10V7a4 4 0 1 1 8 0v3"/>
+                            </svg>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password"
+                            >
+                                <svg viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="1.7">
+                                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        Sign in
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+                <div class="card-footer">
+                    <span class="footer-line"></span>
+                    <span>PyCore Workspace</span>
+                    <span class="footer-line"></span>
+                </div>
+
+            </section>
+
+            <footer class="page-footer">
+                <span>© 2026 PyCore</span>
+                <span class="footer-separator">·</span>
+                <span>Internal team platform</span>
+            </footer>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
