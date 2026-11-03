@@ -99,36 +99,123 @@
           </div>
 
           <div class="content-grid overview-grid">
-            <section class="panel projects-panel reveal">
-              <div class="panel-heading"><div><h2>Projects overview</h2><p>Your team’s active work at a glance</p></div><button class="link-button" type="button" data-page="projects">View all <span>→</span></button></div>
-              <div class="project-list">
-                <article class="project-row"><div class="project-symbol symbol-violet">T</div><div class="project-info"><div class="project-title-line"><h3>TripAz</h3><span class="status-pill status-progress">In progress</span></div><p>Travel planning platform</p><div class="progress-track"><span style="width:72%;background:#9b8afb"></span></div><div class="progress-meta"><span>72% complete</span><span>8 / 11 tasks</span></div></div><div class="project-row-side"><div class="avatar-stack"><span class="avatar mini avatar-blue">AA</span><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-orange">JM</span></div><span class="due-date">Due Oct 28</span></div></article>
-                <article class="project-row"><div class="project-symbol symbol-blue">U</div><div class="project-info"><div class="project-title-line"><h3>Urban Solutions</h3><span class="status-pill status-review">In review</span></div><p>Smart city innovation project</p><div class="progress-track"><span style="width:54%;background:#64a7ff"></span></div><div class="progress-meta"><span>54% complete</span><span>6 / 12 tasks</span></div></div><div class="project-row-side"><div class="avatar-stack"><span class="avatar mini avatar-green">RK</span><span class="avatar mini avatar-pink">AS</span></div><span class="due-date">Due Nov 02</span></div></article>
-                <article class="project-row"><div class="project-symbol symbol-green">C</div><div class="project-info"><div class="project-title-line"><h3>Computer Vision AI</h3><span class="status-pill status-progress">In progress</span></div><p>AI-powered visual recognition</p><div class="progress-track"><span style="width:36%;background:#54d6a0"></span></div><div class="progress-meta"><span>36% complete</span><span>4 / 13 tasks</span></div></div><div class="project-row-side"><div class="avatar-stack"><span class="avatar mini avatar-purple">AM</span><span class="avatar mini avatar-blue">AA</span></div><span class="due-date">Due Nov 10</span></div></article>
-              </div>
-            </section>
+            
+<section class="panel tasks-panel reveal">
 
+    <div class="panel-heading">
+        <div>
+            <h2>My Tasks Overview</h2>
+            <p>Your team's active workload</p>
+        </div>
+
+        <button class="link-button" type="button" data-page="tasks">
+            View all <span>→</span>
+        </button>
+    </div>
+
+    <div class="task-list">
+      {% for task in tasks%}
+
+        <article class="task-card">
+
+            <div class="task-card-main">
+                <div class="task-card-heading">
+                    <span class="task-indicator"></span>
+                    <h3>{{task.name}}</h3>
+                </div>
+
+                <p class="task-description">
+                    {{task.description}}
+                </p>
+
+                <div class="task-card-meta">
+                    <span class="task-status status-progress">
+                        {{task.get_status_display}}
+                    </span>
+
+                    <span class="task-hours">
+                        <i class="fa-regular fa-clock"></i>
+                        {{task.hours_of_work}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="task-card-side">
+                <div class="task-assignee">
+                    <img src="{{task.person_to_do.img.url}}" alt="Ali" class="task-avatar">
+                    <span>{{task.person_to_do.username}}</span>
+                </div>
+
+                <div class="task-deadline">
+                    <i class="fa-regular fa-calendar"></i>
+                    {{task.deadline}}
+                </div>
+            </div>
+
+        </article>
+        {%empty%}
+        <p>No Task To Do.</p>
+         {% endfor%}
+
+    </div>
+   
+
+</section>
             <section class="panel activity-panel reveal">
               <div class="panel-heading"><div><h2>Recent activity</h2><p>Latest updates from your team</p></div><button class="icon-button subtle-icon" type="button" data-page="activity" aria-label="View activity">•••</button></div>
-              <div class="activity-list compact-activity">
-                <article class="activity-item"><span class="activity-avatar avatar-purple">AM</span><div class="activity-copy"><p><strong>Adil Mustafazade</strong> completed a task</p><span class="activity-detail">TripAz · UI review</span><time>12 min ago</time></div></article>
-                <article class="activity-item"><span class="activity-avatar avatar-green">RK</span><div class="activity-copy"><p><strong>Rashad Karimov</strong> moved a task to review</p><span class="activity-detail">Urban Solutions · API integration</span><time>48 min ago</time></div></article>
-                <article class="activity-item"><span class="activity-avatar avatar-blue">AA</span><div class="activity-copy"><p><strong>Ali Asadov</strong> updated a project</p><span class="activity-detail">Computer Vision AI · Model pipeline</span><time>2 hours ago</time></div></article>
-                <article class="activity-item"><span class="activity-avatar avatar-orange">JM</span><div class="activity-copy"><p><strong>Jamal Mammadov</strong> added a comment</p><span class="activity-detail">TripAz · Landing page</span><time>3 hours ago</time></div></article>
+              <div class="activity-list compact-activity"> {% for record in recent_records %}
+                <article class="activity-item"><span class="activity-avatar avatar-purple"><img src="{{record.person.img.url}}"></span><div class="activity-copy"><p><strong>{{record.person.username}}</strong><span class="activity-detail">{{record.task_name}}· {{record.description}}</span></div></article>                         
+                  {%endfor%}
               </div>
               <button class="activity-footer" type="button" data-page="activity">View activity log <span>→</span></button>
             </section>
           </div>
 
-          <section class="panel tasks-panel reveal">
-            <div class="panel-heading"><div><h2>Priority tasks</h2><p>Tasks that need your team’s attention</p></div><div class="panel-heading-actions"><button class="button button-secondary button-small" type="button" data-page="kanban">Open board</button><button class="button button-primary button-small" type="button" data-open-modal="taskModal">＋ Add task</button></div></div>
-            <div class="table-wrap"><table class="tasks-table"><thead><tr><th>TASK</th><th>PROJECT</th><th>ASSIGNEE</th><th>PRIORITY</th><th>STATUS</th><th>DUE DATE</th></tr></thead><tbody>
-              <tr><td><span class="task-check"></span><span class="task-name">Finalize authentication flow</span></td><td><span class="table-project-dot violet"></span>TripAz</td><td><span class="table-person"><span class="avatar mini avatar-blue">AA</span> Ali Asadov</span></td><td><span class="priority priority-high"><i></i> High</span></td><td><span class="status-pill status-progress">In progress</span></td><td>Oct 24, 2026</td></tr>
-              <tr><td><span class="task-check"></span><span class="task-name">Review computer vision dataset</span></td><td><span class="table-project-dot green"></span>Computer Vision AI</td><td><span class="table-person"><span class="avatar mini avatar-purple">AM</span> Adil Mustafazade</span></td><td><span class="priority priority-medium"><i></i> Medium</span></td><td><span class="status-pill status-todo">To do</span></td><td>Oct 26, 2026</td></tr>
-              <tr><td><span class="task-check"></span><span class="task-name">Prepare demo presentation</span></td><td><span class="table-project-dot blue"></span>Urban Solutions</td><td><span class="table-person"><span class="avatar mini avatar-orange">JM</span> Jamal Mammadov</span></td><td><span class="priority priority-high"><i></i> High</span></td><td><span class="status-pill status-review">In review</span></td><td>Oct 27, 2026</td></tr>
-            </tbody></table></div>
-          </section>
-        </section>
+<section class="panel tasks-panel reveal">
+    <div class="panel-heading">
+        <div>
+            <h2>Priority tasks</h2>
+            <p>Tasks that need your team’s attention</p>
+        </div>
+
+        <div class="panel-heading-actions">
+            <button class="button button-secondary button-small" type="button" data-page="kanban">Open board</button>
+            <button class="button button-primary button-small" type="button" data-open-modal="taskModal">＋ Add task</button>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>TASK</th>
+                    <th>CREATED BY</th>
+                    <th>ASSIGNEE</th>
+                    <th>PRIORITY</th>
+                    <th>STATUS</th>
+                    <th>DUE DATE</th>
+                </tr>
+            </thead>
+            {% for task in important_tasks%}
+
+            <tbody>
+                <tr>
+                    <td><span class="task-check"></span><span class="task-name">{{task.name}}</span></td>
+                    <td><span class="table-person"><span class="avatar mini avatar-purple"><img src="{{task.person_to_do.img.url}}" alt=""></span>{{task.author.username}}</span></td>
+                    <td><span class="table-person"><span class="avatar mini avatar-blue"><img src="{{task.person_to_do.img.url}}" alt=""></span> {{task.person_to_do}}</span></td>
+                    <td><span class="priority priority-high"><i></i> {{task.get_priority_display}}</span></td>
+                    <td><span class="status-pill status-progress">{{task.get_status_display}}</span></td>
+                    <td>{{task.deadline}}</td>
+                </tr>
+            </tbody>
+                    {%empty%}
+        <p>No Important tasks to do.</p>
+
+        {%endfor%}
+        </table>
+
+    </div>
+</section>
 
         <!-- PROJECTS -->
         <section class="page-section" id="page-projects" data-title="Projects">

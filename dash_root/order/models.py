@@ -112,4 +112,4 @@ class Record(models.Model):
 
 
     def __str__(self):
-        return str(self.task_name_id)
+        return str(self.id)
