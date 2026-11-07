@@ -1,5 +1,5 @@
 
-const passwordInput = document.getElementById("password");
+const passwordInput = document.getElementById("id_password");
 const passwordToggle = document.getElementById("passwordToggle");
 
 passwordToggle.addEventListener("click", () => {

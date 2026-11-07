@@ -39,8 +39,10 @@
 
                 <form class="login-form" method="POST">
 
+                    {%csrf_token%}
+
                     <div class="form-group">
-                        <label for="username">Nickname</label>
+                        <label for="id_username">Nickname</label>
 
                         <div class="input-wrapper">
                             <svg viewBox="0 0 24 24" fill="none"
@@ -49,19 +51,12 @@
                                 <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
                             </svg>
 
-                            <input
-                                type="text"
-                                id="username"
-                                name="username"
-                                placeholder="Enter your nickname"
-                                autocomplete="username"
-                                required
-                            >
+                            {{form.username}}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="id_password">Password</label>
 
                         <div class="input-wrapper">
                             <svg viewBox="0 0 24 24" fill="none"
@@ -70,14 +65,7 @@
                                 <path d="M8 10V7a4 4 0 1 1 8 0v3"/>
                             </svg>
 
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="Enter your password"
-                                autocomplete="current-password"
-                                required
-                            >
+                            {{form.password}}
 
                             <button
                                 type="button"

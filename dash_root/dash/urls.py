@@ -19,11 +19,11 @@ from django.urls import path
 from order.views import index
 from django.conf import settings
 from django.conf.urls.static import static
-from users.views import login
+from users.views import login_form
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = 'index'),
-    path('login',login, name = 'login')
+    path('login',login_form, name = 'login')
 ]
 
 
